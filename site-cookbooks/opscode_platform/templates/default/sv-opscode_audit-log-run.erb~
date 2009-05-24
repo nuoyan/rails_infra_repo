@@ -1,0 +1,1 @@
+exec svlogd -tt ./main

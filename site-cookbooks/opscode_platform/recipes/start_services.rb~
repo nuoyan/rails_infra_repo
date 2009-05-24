@@ -1,0 +1,15 @@
+include_recipe "runit"
+
+service_list = ["rabbitmq-server", "opscode_audit", "dynomite", "opscode-guid","opscode_cert", "opscode_account"]
+
+#use runit to start the services
+service_list.each do |s|
+  runit_service s
+end
+
+#Ensures the service started
+service_list.each do |s|
+  service s do
+    action :restart
+  end 
+end
